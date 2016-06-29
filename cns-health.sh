@@ -55,10 +55,23 @@ action=${*:OPTIND:1}
 self=${*:OPTIND:2}
 
 case $action in
-    start) method_start;;
-    stop)  method_stop;;
-    refresh) exit 0;;
-    *) printf 'Action was %s\n' "$action"; exit "$SMF_EXIT_ERR_FATAL";;
+    start)
+        # Disable right off the bat, just in case we didn't go down cleanly
+        # e.g., in the event of a panic. This ensures that long health checks
+        # don't delay removal of broken services at boot.
+        disalbe_cns
+        method_start
+        ;;
+    stop)
+        method_stop
+        ;;
+    refresh)
+        exit 0
+        ;;
+    *)
+        printf 'Action was %s\n' "$action"
+        exit "$SMF_EXIT_ERR_FATAL"
+        ;;
 esac
 
 exit 0
