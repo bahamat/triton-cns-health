@@ -42,10 +42,6 @@ function enable_cns () {
     set_cns_status up
 }
 
-function add_smf_dependency () {
-    svccfg -s ${*:OPTIND:2} addpropvalue dependency
-}
-
 function method_start () {
     while :; do
         check_health
