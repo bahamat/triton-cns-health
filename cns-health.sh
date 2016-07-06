@@ -59,7 +59,7 @@ case $action in
         # Disable right off the bat, just in case we didn't go down cleanly
         # e.g., in the event of a panic. This ensures that long health checks
         # don't delay removal of broken services at boot.
-        disalbe_cns
+        disable_cns
         method_start
         ;;
     stop)
