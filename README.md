@@ -34,6 +34,8 @@ Here's an example using the [triton cli][node-triton].
         --tag triton.cns.services=www \
         --metadata='{"triton.cns.status": "down"}'
 
+[node-triton]: https://github.com/joyent/node-triton
+
 For full automation you should use a `user-script` to bootstrap your
 deployement system which should then install all services as well as the
 health checker along with appropriate health check scripts.
